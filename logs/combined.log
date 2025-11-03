@@ -1,0 +1,412 @@
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 11:51:13"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:14"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:51:16"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 11:52:59"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:00"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 11:53:04"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:05"}
+{"level":"info","message":"\n⚠️  SIGINT signal received: closing HTTP server","service":"eventflow-backend","timestamp":"2025-11-03 11:53:16"}
+{"level":"info","message":"🔄 HTTP server closed","service":"eventflow-backend","timestamp":"2025-11-03 11:53:16"}
+{"level":"info","message":"✅ Graceful shutdown completed","service":"eventflow-backend","timestamp":"2025-11-03 11:53:16"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 11:53:22"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:53:23"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 11:55:22"}
+{"level":"info","message":"\n⚠️  SIGINT signal received: closing HTTP server","service":"eventflow-backend","timestamp":"2025-11-03 12:00:00"}
+{"level":"info","message":"🔄 HTTP server closed","service":"eventflow-backend","timestamp":"2025-11-03 12:00:00"}
+{"level":"info","message":"✅ Graceful shutdown completed","service":"eventflow-backend","timestamp":"2025-11-03 12:00:00"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:00:17"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:05:26"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:27"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:05:35"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:36"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:46"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:05:48"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:49"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:05:58"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:01"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:08"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:06:10"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:33:19"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:20"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:33:30"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:17"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:34:24"}
+{"level":"info","message":"\n⚠️  SIGINT signal received: closing HTTP server","service":"eventflow-backend","timestamp":"2025-11-03 12:38:13"}
+{"level":"info","message":"🔄 HTTP server closed","service":"eventflow-backend","timestamp":"2025-11-03 12:38:13"}
+{"level":"info","message":"✅ Graceful shutdown completed","service":"eventflow-backend","timestamp":"2025-11-03 12:38:13"}
+{"level":"info","message":"🔄 Connecting to database...","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"🚀 EventFlow Backend Server Started Successfully!","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"📍 Environment: development","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"🌐 Server URL: http://localhost:5000","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"📡 API Endpoint: http://localhost:5000/api/v1","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"💾 Database: Neon PostgreSQL (Connected)","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"🔐 JWT Auth: Enabled","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"📋 Available Routes:","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/auth/register","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/auth/login","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - GET    /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/events","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/participants/join","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/locations","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/zones","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"   - POST   /api/v1/reports","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"============================================================","service":"eventflow-backend","timestamp":"2025-11-03 12:39:43"}
+{"level":"info","message":"\n⚠️  SIGINT signal received: closing HTTP server","service":"eventflow-backend","timestamp":"2025-11-03 12:44:15"}
+{"level":"info","message":"🔄 HTTP server closed","service":"eventflow-backend","timestamp":"2025-11-03 12:44:15"}
+{"level":"info","message":"✅ Graceful shutdown completed","service":"eventflow-backend","timestamp":"2025-11-03 12:44:15"}

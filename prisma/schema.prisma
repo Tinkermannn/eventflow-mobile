@@ -1,0 +1,240 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== ENUMS ====================
+
+enum UserRole {
+  SUPER_ADMIN
+  EVENT_ORGANIZER
+  SECURITY_STAFF
+  PARTICIPANT
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum ZoneRiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ReportStatus {
+  PENDING
+  TRIAGED
+  IN_PROGRESS
+  RESOLVED
+  DISMISSED
+}
+
+enum ReportPriority {
+  LOW
+  MEDIUM
+  HIGH
+  EMERGENCY
+}
+
+enum FacilityType {
+  MEDICAL_POST
+  EXIT
+  ASSEMBLY_POINT
+  RESTROOM
+  FOOD_STATION
+  INFORMATION_DESK
+  SECURITY_POST
+}
+
+// ==================== MODELS ====================
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      UserRole @default(PARTICIPANT)
+  name      String
+  phone     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizedEvents Event[]       @relation("EventOrganizer")
+  participations  Participant[]
+  reports         Report[]
+
+  @@index([email])
+  @@index([role])
+  @@map("users")
+}
+
+model Event {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  location    String
+  latitude    Float
+  longitude   Float
+  maxCapacity Int?
+  status      EventStatus @default(DRAFT)
+  organizerId String
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  organizer    User          @relation("EventOrganizer", fields: [organizerId], references: [id], onDelete: Cascade)
+  zones        Zone[]
+  participants Participant[]
+  reports      Report[]
+  facilities   Facility[]
+  routes       Route[]
+
+  @@index([organizerId])
+  @@index([status])
+  @@index([startDate, endDate])
+  @@index([isActive])
+  @@map("events")
+}
+
+model Zone {
+  id          String        @id @default(cuid())
+  eventId     String
+  name        String
+  description String?
+  polygon     Json          // GeoJSON format
+  riskLevel   ZoneRiskLevel @default(LOW)
+  capacity    Int?
+  color       String        @default("#3B82F6")
+  isActive    Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  event     Event                 @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  locations ParticipantLocation[]
+
+  @@index([eventId])
+  @@index([riskLevel])
+  @@index([isActive])
+  @@map("zones")
+}
+
+model Participant {
+  id        String   @id @default(cuid())
+  eventId   String
+  userId    String?
+  deviceId  String   @unique
+  name      String?
+  phone     String?
+  isActive  Boolean  @default(true)
+  lastSeen  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  event     Event                 @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user      User?                 @relation(fields: [userId], references: [id], onDelete: SetNull)
+  locations ParticipantLocation[]
+  reports   Report[]
+
+  @@index([eventId])
+  @@index([userId])
+  @@index([deviceId])
+  @@index([isActive])
+  @@map("participants")
+}
+
+model ParticipantLocation {
+  id            BigInt   @id @default(autoincrement())
+  participantId String
+  latitude      Float
+  longitude     Float
+  accuracy      Float?
+  zoneId        String?
+  timestamp     DateTime @default(now())
+  createdAt     DateTime @default(now())
+
+  participant Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  zone        Zone?       @relation(fields: [zoneId], references: [id], onDelete: SetNull)
+
+  @@index([participantId, timestamp(sort: Desc)])
+  @@index([zoneId])
+  @@index([timestamp(sort: Desc)])
+  @@map("participant_locations")
+}
+
+model Report {
+  id            String         @id @default(cuid())
+  eventId       String
+  participantId String?
+  userId        String?
+  title         String
+  message       String
+  aiSummary     String?
+  status        ReportStatus   @default(PENDING)
+  priority      ReportPriority @default(MEDIUM)
+  category      String?
+  latitude      Float?
+  longitude     Float?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  event       Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  participant Participant? @relation(fields: [participantId], references: [id], onDelete: SetNull)
+  user        User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([eventId, status])
+  @@index([priority])
+  @@index([status])
+  @@index([createdAt(sort: Desc)])
+  @@map("reports")
+}
+
+model Facility {
+  id          String       @id @default(cuid())
+  eventId     String
+  type        FacilityType
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([type])
+  @@index([isActive])
+  @@map("facilities")
+}
+
+model Route {
+  id          String   @id @default(cuid())
+  eventId     String
+  name        String
+  description String?
+  path        Json     // Array of coordinates
+  type        String   @default("EVACUATION")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([type])
+  @@index([isActive])
+  @@map("routes")
+}

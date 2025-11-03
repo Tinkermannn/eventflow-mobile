@@ -1,0 +1,72 @@
+eventflow-backend/
+├── logs/                      # Application logs
+│   ├── combined.log             # All logs
+│   └── error.log                # Error logs only
+│
+├── prisma/
+│   └── schema.prisma            # Database schema
+│
+├── src/
+│   ├── config/               # Configuration files
+│   │   ├── database.ts          # Prisma client setup
+│   │   └── environment.ts       # Environment variables
+│   │
+│   ├── controllers/          # Request handlers
+│   │   ├── auth.controller.ts
+│   │   ├── event.controller.ts
+│   │   ├── location.controller.ts
+│   │   ├── participant.controller.ts
+│   │   ├── report.controller.ts
+│   │   └── zone.controller.ts
+│   │
+│   ├── middleware/           # Express middleware
+│   │   ├── auth.ts              # JWT authentication
+│   │   ├── errorHandler.ts     # Global error handler
+│   │   ├── requestLogger.ts    # Request logging
+│   │   ├── security.ts          # Security headers
+│   │   └── validator.ts         # Input validation
+│   │
+│   ├── repositories/         # Database operations
+│   │   ├── event.repository.ts
+│   │   ├── location.repository.ts
+│   │   ├── participant.repository.ts
+│   │   ├── report.repository.ts
+│   │   ├── user.repository.ts
+│   │   └── zone.repository.ts
+│   │
+│   ├── routes/               # API routes
+│   │   ├── auth.routes.ts
+│   │   ├── event.routes.ts
+│   │   ├── location.routes.ts
+│   │   ├── participant.routes.ts
+│   │   ├── report.routes.ts
+│   │   ├── zone.routes.ts
+│   │   └── index.ts             # Main router
+│   │
+│   ├── services/             # Business logic
+│   │   ├── auth.service.ts
+│   │   ├── event.service.ts
+│   │   ├── location.service.ts
+│   │   ├── participant.service.ts
+│   │   ├── report.service.ts
+│   │   └── zone.service.ts
+│   │
+│   ├── types/                # TypeScript types
+│   │   ├── express.d.ts
+│   │   └── interfaces.ts
+│   │
+│   ├── utils/                # Utility functions
+│   │   ├── constants.ts
+│   │   ├── helpers.ts
+│   │   └── logger.ts
+│   │
+│   ├── app.ts                   # Express app setup
+│   └── index.ts                 # Server entry point
+│
+├── .env                         # Environment variables
+├── .env.example                 # Environment template
+├── .gitignore
+├── nodemon.json                 # Nodemon config
+├── package.json
+├── tsconfig.json                # TypeScript config
+└── README.md
