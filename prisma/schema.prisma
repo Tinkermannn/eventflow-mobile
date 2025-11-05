@@ -1,0 +1,169 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- ENUMS ---
+enum Role {
+  PARTICIPANT
+  ORGANIZER
+}
+
+enum EventStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum ReportCategory {
+  SECURITY
+  CROWD
+  FACILITY
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  IN_PROGRESS
+  RESOLVED
+}
+
+enum NotificationType {
+  GENERAL
+  EVENT_UPDATE
+  BROADCAST
+  SECURITY_ALERT
+}
+
+
+// --- MODELS ---
+model User {
+  id              String        @id @default(cuid())
+  email           String        @unique
+  name            String
+  passwordHash    String
+  avatarUrl       String?
+  phoneNumber     String?
+  role            Role          @default(PARTICIPANT)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  organizedEvents   Event[]             @relation("OrganizerEvents")
+  participatedEvents EventParticipant[]
+  reports           Report[]
+  notifications     UserNotification[]
+  devices           Device[]
+  locations         ParticipantLocation[]
+}
+
+model Event {
+  id              String        @id @default(cuid())
+  name            String
+  description     String?
+  startTime       DateTime
+  endTime         DateTime
+  locationName    String
+  latitude        Float
+  longitude       Float
+  status          EventStatus   @default(UPCOMING)
+  joinCode        String        @unique
+  organizerId     String
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  organizer       User                @relation("OrganizerEvents", fields: [organizerId], references: [id], onDelete: Restrict)
+  participants    EventParticipant[]
+  reports         Report[]
+  virtualAreas    VirtualArea[]
+  notifications   Notification[]
+  participantLocations ParticipantLocation[]
+}
+
+model EventParticipant {
+  joinedAt DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String
+  event    Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId  String
+
+  @@id([userId, eventId])
+}
+
+model Report {
+  id          String         @id @default(cuid())
+  category    ReportCategory
+  description String
+  latitude    Float
+  longitude   Float
+  status      ReportStatus   @default(PENDING)
+  reporterId  String
+  eventId     String
+  createdAt   DateTime       @default(now())
+
+  reporter User  @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+  event    Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+model VirtualArea {
+  id      String @id @default(cuid())
+  name    String
+  // Untuk Polygon, cara termudah tanpa PostGIS adalah menyimpan array dari titik-titik koordinat sebagai JSON.
+  area    Json
+  eventId String
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+model ParticipantLocation {
+  latitude      Float
+  lastUpdatedAt DateTime @default(now())
+  longitude     Float
+  
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String
+  event   Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId String
+
+  @@id([userId, eventId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  title     String
+  message   String
+  type      NotificationType @default(GENERAL)
+  eventId   String?
+  createdAt DateTime @default(now())
+
+  event           Event?             @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  userNotifications UserNotification[]
+}
+
+model UserNotification {
+  isRead   Boolean  @default(false)
+  readAt   DateTime?
+
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  notificationId String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String
+
+  @@id([notificationId, userId])
+}
+
+model Device {
+  id          String   @id @default(cuid())
+  pushToken   String   @unique
+  lastLoginAt DateTime @default(now())
+  userId      String
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
