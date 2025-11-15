@@ -1,0 +1,81 @@
+/**
+ * File: notificationController.ts
+ * Author: eventFlow Team
+ * Deskripsi: Mengelola endpoint broadcast notifikasi event, pengambilan dan update status notifikasi user.
+ * Dibuat: 2025-11-10
+ * Terakhir Diubah: 2025-11-10
+ * Versi: 1.0.0
+ * Lisensi: MIT
+ * Dependensi: Express, Prisma, JWT
+*/
+import { Request, Response } from 'express';
+import { listNotifications, createNotification } from '../repositories/notificationRepository';
+import { createUserNotification } from '../repositories/userNotificationRepository';
+import { prisma } from '../config/prisma';
+import { baseResponse } from '../utils/baseResponse';
+import { errorResponse } from '../utils/baseResponse';
+import { verifyJwt } from '../utils/jwt';
+import { JWTPayload } from '../types/jwtPayload';
+import { emitNotification } from '../utils/socket';
+import { Notification } from '../types/notification';
+import { findEventById } from '../repositories/eventRepository';
+
+
+export const createBroadcast = async (req: Request, res: Response, next: Function) => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    const payload = token ? (verifyJwt(token) as JWTPayload) : null;
+    if (!payload)
+      return res.status(401).json(errorResponse('Unauthorized'));
+    const { eventId, category, message, title, type } = req.body;
+    if (!eventId || !category || !message || !title)
+      return res.status(400).json(errorResponse('Missing fields'));
+    // Validasi event dan hak broadcast
+    const event = await findEventById(eventId);
+    if (!event)
+      return res.status(404).json(errorResponse('Event not found'));
+    if (event.organizerId !== payload.userId)
+      return res.status(403).json(errorResponse('Anda bukan organizer event ini'));
+    // Validasi type agar hanya enum NotificationType
+    const allowedTypes = ['GENERAL', 'EVENT_UPDATE', 'BROADCAST', 'SECURITY_ALERT'];
+    const notifType = allowedTypes.includes(type) ? type : 'BROADCAST';
+    // 1. Buat notifikasi event
+    const prismaNotification = await createNotification({
+      eventId,
+      category,
+      message,
+      title,
+      type: notifType,
+    });
+    // 2. Ambil semua peserta event
+    const participants = await prisma.eventParticipant.findMany({ where: { eventId } });
+    // 3. Assign notifikasi ke semua peserta
+    await Promise.all(participants.map(async (p) => {
+      await createUserNotification({
+        notification: { connect: { id: prismaNotification.id } },
+        user: { connect: { id: p.userId } },
+      });
+    }));
+    const notification: Notification = {
+      ...prismaNotification,
+      eventId: prismaNotification.eventId ?? undefined,
+      category: prismaNotification.category ?? undefined,
+    };
+    emitNotification(notification);
+    res.json(baseResponse({ success: true, data: notification }));
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getEventNotifications = async (req: Request, res: Response, next: Function) => {
+  try {
+    const { id: eventId } = req.params;
+    if (!eventId) return res.status(400).json(errorResponse('eventId wajib diisi'));
+    const notifications = await listNotifications(eventId);
+    res.json(baseResponse({ success: true, data: notifications }));
+  } catch (err) {
+    next(err);
+  }
+};
+

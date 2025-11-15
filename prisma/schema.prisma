@@ -1,0 +1,234 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String                @id @default(cuid())
+  email               String                @unique
+  name                String
+  passwordHash        String?
+  avatarUrl           String?
+  phoneNumber         String?
+  role                Role                  @default(PARTICIPANT)
+  googleId            String?               @unique
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  chatMessages        ChatMessage[]
+  deletedChatMessages ChatMessageDelete[]
+  devices             Device[]
+  organizedEvents     Event[]               @relation("OrganizerEvents")
+  participatedEvents  EventParticipant[]
+  locations           ParticipantLocation[]
+  pollVotes           PollVote[]
+  reports             Report[]
+  notifications       UserNotification[]
+}
+
+model Event {
+  id                   String                @id @default(cuid())
+  name                 String
+  description          String?
+  startTime            DateTime
+  endTime              DateTime
+  locationName         String
+  latitude             Float
+  longitude            Float
+  status               EventStatus           @default(UPCOMING)
+  joinCode             String                @unique
+  organizerId          String
+  totalParticipants    Int                   @default(0)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  maxParticipants      Int?
+  chatMessages         ChatMessage[]
+  organizer            User                  @relation("OrganizerEvents", fields: [organizerId], references: [id])
+  participants         EventParticipant[]
+  notifications        Notification[]
+  participantLocations ParticipantLocation[]
+  polls                Poll[]
+  reports              Report[]
+  virtualAreas         VirtualArea[]
+}
+
+model EventParticipant {
+  joinedAt         DateTime @default(now())
+  userId           String
+  eventId          String
+  nodeColor        String?
+  attendanceStatus String?
+  event            Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, eventId])
+}
+
+model ChatMessage {
+  id            String              @id @default(cuid())
+  eventId       String
+  userId        String
+  message       String
+  createdAt     DateTime            @default(now())
+  virtualAreaId String?
+  event         Event               @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user          User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  virtualArea   VirtualArea?        @relation(fields: [virtualAreaId], references: [id])
+  chatDeletes   ChatMessageDelete[]
+}
+
+model ChatMessageDelete {
+  id            String      @id @default(cuid())
+  chatMessageId String
+  userId        String
+  deletedAt     DateTime    @default(now())
+  chatMessage   ChatMessage @relation(fields: [chatMessageId], references: [id], onDelete: Cascade)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Poll {
+  id        String       @id @default(cuid())
+  eventId   String
+  question  String
+  createdAt DateTime     @default(now())
+  event     Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  options   PollOption[]
+}
+
+model PollOption {
+  id        String     @id @default(cuid())
+  pollId    String
+  text      String
+  votes     Int        @default(0)
+  poll      Poll       @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  pollVotes PollVote[]
+}
+
+model PollVote {
+  pollOptionId   String
+  userId         String
+  votedAt        DateTime      @default(now())
+  virtualAreaId  String?
+  notificationId String?
+  notification   Notification? @relation(fields: [notificationId], references: [id])
+  pollOption     PollOption    @relation(fields: [pollOptionId], references: [id], onDelete: Cascade)
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  virtualArea    VirtualArea?  @relation(fields: [virtualAreaId], references: [id])
+
+  @@id([pollOptionId, userId])
+}
+
+model Report {
+  id          String         @id @default(cuid())
+  category    ReportCategory
+  description String
+  latitude    Float
+  longitude   Float
+  status      ReportStatus   @default(PENDING)
+  reporterId  String
+  eventId     String
+  createdAt   DateTime       @default(now())
+  mediaUrls   Json?
+  adminNotes  String?
+  event       Event          @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  reporter    User           @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+}
+
+model VirtualArea {
+  id           String                  @id @default(cuid())
+  name         String
+  area         Unsupported("geometry")
+  color        String
+  eventId      String
+  chatMessages ChatMessage[]
+  pollVotes    PollVote[]
+  event        Event                   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+model ParticipantLocation {
+  latitude      Float
+  lastUpdatedAt DateTime @default(now())
+  longitude     Float
+  userId        String
+  eventId       String
+  event         Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, eventId])
+}
+
+model Notification {
+  id                String             @id @default(cuid())
+  title             String
+  message           String
+  type              NotificationType   @default(GENERAL)
+  eventId           String?
+  category          ReportCategory?
+  createdAt         DateTime           @default(now())
+  event             Event?             @relation(fields: [eventId], references: [id])
+  pollVotes         PollVote[]
+  userNotifications UserNotification[]
+}
+
+model UserNotification {
+  isRead         Boolean      @default(false)
+  readAt         DateTime?
+  notificationId String
+  userId         String
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([notificationId, userId])
+}
+
+model Device {
+  id          String   @id @default(cuid())
+  pushToken   String   @unique
+  lastLoginAt DateTime @default(now())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+}
+
+enum Role {
+  PARTICIPANT
+  ORGANIZER
+}
+
+enum EventStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum ReportCategory {
+  SECURITY
+  CROWD
+  FACILITY
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  IN_PROGRESS
+  RESOLVED
+}
+
+enum NotificationType {
+  GENERAL
+  EVENT_UPDATE
+  BROADCAST
+  SECURITY_ALERT
+}
