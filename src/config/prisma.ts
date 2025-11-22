@@ -27,6 +27,7 @@ export type {
   VirtualArea,
   ChatMessage,
   ChatMessageDelete,
+  ReportAIResult,
 } from '@prisma/client';
 
 export const prisma = new PrismaClient();

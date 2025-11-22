@@ -40,7 +40,6 @@ const router = Router();
  *               - locationName
  *               - latitude
  *               - longitude
- *               - joinCode
  *             properties:
  *               name:
  *                 type: string
@@ -58,8 +57,6 @@ const router = Router();
  *                 type: number
  *               longitude:
  *                 type: number
- *               joinCode:
- *                 type: string
  *     responses:
  *       200:
  *         description: Event berhasil dibuat

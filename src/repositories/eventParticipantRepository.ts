@@ -8,49 +8,73 @@
  * Lisensi: MIT
  * Dependensi: Prisma
 */
-import { prisma, EventParticipant } from '../config/prisma';
+import { Prisma, prisma, EventParticipant } from '../config/prisma';
 
-export const findEventParticipant = async (
+// Cek apakah user adalah peserta aktif event
+export const isEventParticipant = async (eventId: string, userId: string): Promise<boolean> => {
+  const participant = await prisma.eventParticipant.findFirst({
+    where: { eventId, userId, isActive: true },
+  });
+  return !!participant;
+};
+
+// Cari record aktif (isActive = true) untuk user dan event
+export const findActiveEventParticipant = async (
   userId: string,
   eventId: string,
 ): Promise<EventParticipant | null> => {
-  return prisma.eventParticipant.findUnique({
-    where: { userId_eventId: { userId, eventId } },
+  return prisma.eventParticipant.findFirst({
+    where: { userId, eventId, isActive: true },
   });
 };
 
+// List peserta aktif pada event
 export const listEventParticipants = async (
   eventId: string,
 ): Promise<EventParticipant[]> => {
-  return prisma.eventParticipant.findMany({ where: { eventId } });
+  return prisma.eventParticipant.findMany({ where: { eventId, isActive: true } });
 };
-import { Prisma } from '@prisma/client';
+
+// List history partisipasi user pada event (termasuk yang sudah unjoin)
+export const listEventParticipantHistory = async (
+  userId: string,
+  eventId: string
+): Promise<EventParticipant[]> => {
+  return prisma.eventParticipant.findMany({
+    where: { userId, eventId },
+    orderBy: { joinedAt: 'asc' }
+  });
+};
 
 export const createEventParticipant = async (data: Prisma.EventParticipantCreateInput): Promise<EventParticipant> => {
   return prisma.eventParticipant.create({ data });
 };
 
-export const updateEventParticipant = async (
+// Update record aktif (unjoin)
+
+export const unjoinEventParticipant = async (
   userId: string,
   eventId: string,
-  data: Partial<EventParticipant>,
-): Promise<EventParticipant> => {
+): Promise<EventParticipant | null> => {
+  const active = await prisma.eventParticipant.findFirst({ where: { userId, eventId, isActive: true } });
+  if (!active) return null;
   return prisma.eventParticipant.update({
-    where: { userId_eventId: { userId, eventId } },
-    data,
+    where: { id: active.id },
+    data: { isActive: false, leftAt: new Date() },
   });
 };
 
+
+// Hapus record by id (jika memang perlu hapus fisik)
 export const deleteEventParticipant = async (
-  userId: string,
-  eventId: string,
+  id: string,
 ): Promise<EventParticipant> => {
   return prisma.eventParticipant.delete({
-    where: { userId_eventId: { userId, eventId } },
+    where: { id },
   });
 };
 
-// Hitung total peserta event
+// Hitung total peserta aktif event
 export const countEventParticipants = async (eventId: string): Promise<number> => {
-  return prisma.eventParticipant.count({ where: { eventId } });
+  return prisma.eventParticipant.count({ where: { eventId, isActive: true } });
 };

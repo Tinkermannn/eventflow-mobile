@@ -222,8 +222,8 @@ const joinEvent = async (req, res) => {
         const participantCount = participantList.length;
         if (event.maxParticipants && participantCount >= event.maxParticipants) {
             // Emit real-time notification to all clients
-            const { emitNotification } = await Promise.resolve().then(() => __importStar(require('../utils/socket')));
-            emitNotification({
+            // const { emitNotification } = await import('../utils/socket');
+            (0, socket_1.emitNotification)({
                 type: 'EVENT_FULL',
                 eventId: id,
                 message: 'Event sudah penuh, tidak bisa join lebih banyak peserta.',
@@ -259,7 +259,10 @@ const unjoinEvent = async (req, res) => {
         if (!payload)
             return res.status(401).json((0, baseResponse_2.errorResponse)('Unauthorized'));
         const { id } = req.params;
-        await (0, eventParticipantRepository_1.deleteEventParticipant)(payload.userId, id);
+        const active = await (0, eventParticipantRepository_1.findActiveEventParticipant)(payload.userId, id);
+        if (!active)
+            return res.status(404).json((0, baseResponse_2.errorResponse)('Active participant not found'));
+        await (0, eventParticipantRepository_1.unjoinEventParticipant)(payload.userId, id);
         // Update totalParticipants di Event setelah counting
         const totalParticipants = await (0, eventParticipantRepository_2.countEventParticipants)(id);
         await (0, eventRepository_1.updateEvent)(id, { totalParticipants });

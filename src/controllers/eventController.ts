@@ -17,16 +17,16 @@ import {
   deleteEvent as deleteEventRepo,
 } from '../repositories/eventRepository';
 
-import { deleteEventParticipant } from '../repositories/eventParticipantRepository';
+import { findActiveEventParticipant, unjoinEventParticipant  } from '../repositories/eventParticipantRepository';
 import { baseResponse } from '../utils/baseResponse';
 import { errorResponse } from '../utils/baseResponse';
 import { countEventParticipants, createEventParticipant } from '../repositories/eventParticipantRepository';
 import { JWTPayload } from '../types/jwtPayload';
 import { verifyJwt } from '../utils/jwt';
-import { emitEventUpdate, emitAbsensiUpdate } from '../utils/socket';
+import { generateJoinCode } from '../utils/generateJoinCode';
+import { emitEventUpdate, emitAbsensiUpdate, emitNotification} from '../utils/socket';
 import { Event } from '../types/event';
 import type { EventParticipant } from '../types/eventParticipant';
-
 
 export const createEvent = async (req: Request, res: Response) => {
   try {
@@ -42,7 +42,6 @@ export const createEvent = async (req: Request, res: Response) => {
       locationName,
       latitude,
       longitude,
-      joinCode,
     } = req.body;
     if (
       !name ||
@@ -50,11 +49,11 @@ export const createEvent = async (req: Request, res: Response) => {
       !endTime ||
       !locationName ||
       !latitude ||
-      !longitude ||
-      !joinCode
+      !longitude
     ) {
       return res.status(400).json(errorResponse('Missing fields'));
     }
+    const joinCode = generateJoinCode();
     const prismaEvent = await createEventRepo({
       name,
       description,
@@ -63,7 +62,7 @@ export const createEvent = async (req: Request, res: Response) => {
       locationName,
       latitude,
       longitude,
-      joinCode,
+      joinCode, // Use the generated joinCode
       organizer: { connect: { id: payload.userId } },
     });
     // ORGANIZER otomatis jadi peserta event
@@ -220,7 +219,7 @@ export const joinEvent = async (req: Request, res: Response) => {
     const participantCount = participantList.length;
     if (event.maxParticipants && participantCount >= event.maxParticipants) {
       // Emit real-time notification to all clients
-      const { emitNotification } = await import('../utils/socket');
+      // const { emitNotification } = await import('../utils/socket');
       emitNotification({
         type: 'EVENT_FULL',
         eventId: id,
@@ -258,7 +257,10 @@ export const unjoinEvent = async (req: Request, res: Response) => {
       return res.status(401).json(errorResponse('Unauthorized'));
     const { id } = req.params;
 
-    await deleteEventParticipant(payload.userId, id);
+    const active = await findActiveEventParticipant(payload.userId, id);
+    if (!active) return res.status(404).json(errorResponse('Active participant not found'));
+    await unjoinEventParticipant(payload.userId, id);
+
     // Update totalParticipants di Event setelah counting
     const totalParticipants = await countEventParticipants(id);
     await updateEventRepo(id, { totalParticipants });

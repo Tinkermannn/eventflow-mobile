@@ -47,7 +47,7 @@ const requireAuth_1 = require("../utils/requireAuth");
 const router = (0, express_1.Router)();
 /**
  * @swagger
- * /auth/register:
+ * /auths/register:
  *   post:
  *     summary: Register user baru
  *     description: Registrasi user baru ke eventFlow.
@@ -117,7 +117,77 @@ const router = (0, express_1.Router)();
 router.post('/register', authController_1.register);
 /**
  * @swagger
- * /auth/login:
+ * /auths/register:
+ *   post:
+ *     summary: Register Dashboard
+ *     description: Registrasi Organizer baru ke eventFlow.
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nama lengkap user
+ *                 example: John Doe
+ *               email:
+ *                 type: string
+ *                 description: Email user
+ *                 example: john@example.com
+ *               password:
+ *                 type: string
+ *                 description: Password user (minimal 6 karakter)
+ *                 example: password123
+ *               phoneNumber:
+ *                 type: string
+ *                 description: Nomor telepon user
+ *                 example: "081234567890"
+ *     responses:
+ *       200:
+ *         description: User berhasil diregistrasi
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: User registered successfully
+ *                 user:
+ *                   $ref: '#/components/schemas/User'
+ *                 token:
+ *                   type: string
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *       400:
+ *         description: Data tidak lengkap
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: Bad Request
+ *               message: All fields are required
+ *       409:
+ *         description: Email sudah terdaftar
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: Conflict
+ *               message: Email already registered
+ */
+router.post('/register-as-organizer', authController_1.regitserAsOrganizer);
+/**
+ * @swagger
+ * /auths/login:
  *   post:
  *     summary: Login user
  *     description: Login user ke eventFlow dan mendapatkan JWT token.
@@ -179,7 +249,7 @@ router.post('/register', authController_1.register);
 router.post('/login', authController_1.login);
 /**
  * @swagger
- * /auth/update:
+ * /auths/update:
  *   patch:
  *     summary: Update data user
  *     description: Update data user yang sedang login. Memerlukan JWT token.
@@ -241,7 +311,7 @@ router.post('/login', authController_1.login);
 router.patch('/update', requireAuth_1.requireAuth, authController_1.updateUser);
 /**
  * @swagger
- * /auth/delete:
+ * /auths/delete:
  *   delete:
  *     summary: Hapus user
  *     description: Hapus user yang sedang login dari eventFlow. Memerlukan JWT token.

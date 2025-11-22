@@ -1,10 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteVirtualArea = exports.updateVirtualArea = exports.searchVirtualAreaByLocation = exports.getVirtualAreaById = exports.getVirtualAreas = exports.createVirtualArea = void 0;
+exports.deleteVirtualArea = exports.updateVirtualArea = exports.searchVirtualAreaByLocation = exports.getVirtualAreaById = exports.getVirtualAreas = exports.createVirtualArea = exports.getCurrentVirtualArea = void 0;
+;
 const virtualAreaRepository_1 = require("../repositories/virtualAreaRepository");
 const baseResponse_1 = require("../utils/baseResponse");
 const baseResponse_2 = require("../utils/baseResponse");
 const jwt_1 = require("../utils/jwt");
+// Endpoint: GET /events/:eventId/virtual-area/current?lat=...&lng=...
+const getCurrentVirtualArea = async (req, res) => {
+    try {
+        const { eventId } = req.params;
+        const { lat, lng } = req.query;
+        if (!eventId || !lat || !lng) {
+            return res.status(400).json({ success: false, message: 'eventId, lat, lng wajib diisi' });
+        }
+        ;
+        const area = await (0, virtualAreaRepository_1.getUserCurrentVirtualArea)(eventId, parseFloat(String(lat)), parseFloat(String(lng)));
+        return res.json({ success: true, data: area, message: area ? 'User berada di area virtual' : 'User di luar area virtual' });
+    }
+    catch (err) {
+        res.status(500).json({ success: false, message: err instanceof Error ? err.message : 'Unknown error' });
+    }
+};
+exports.getCurrentVirtualArea = getCurrentVirtualArea;
 const createVirtualArea = async (req, res) => {
     try {
         const token = req.headers.authorization?.split(' ')[1];
