@@ -30,3 +30,6 @@ Thumbs.db
 # Others
 coverage/
 
+# Ignore uploads folder
+uploads/
+
