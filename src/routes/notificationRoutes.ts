@@ -29,13 +29,10 @@ const router = Router();
  *           schema:
  *             type: object
  *             required:
- *               - category
  *               - message
  *               - title
  *             properties:
  *               eventId:
- *                 type: string
- *               category:
  *                 type: string
  *               message:
  *                 type: string
@@ -60,7 +57,7 @@ router.post(
 
 /**
  * @swagger
- * /notifications/event/{id}:
+ * /notifications/{id}:
  *   get:
  *     summary: Ambil semua notifikasi pada suatu event tertentu
  *     tags: [Notification]
@@ -79,7 +76,7 @@ router.post(
  *       401:
  *         description: Unauthorized
  */
-router.get('/event/:id', requireAuth, getEventNotifications);
+router.get('/:id', requireAuth, getEventNotifications);
 
 
 export default router;

@@ -25,13 +25,10 @@ const router = (0, express_1.Router)();
  *           schema:
  *             type: object
  *             required:
- *               - category
  *               - message
  *               - title
  *             properties:
  *               eventId:
- *                 type: string
- *               category:
  *                 type: string
  *               message:
  *                 type: string
@@ -50,7 +47,7 @@ const router = (0, express_1.Router)();
 router.post('/broadcast', requireAuth_1.requireAuth, (0, requireRole_1.requireRole)(['ORGANIZER']), notificationController_1.createBroadcast);
 /**
  * @swagger
- * /notifications/event/{id}:
+ * /notifications/{id}:
  *   get:
  *     summary: Ambil semua notifikasi pada suatu event tertentu
  *     tags: [Notification]
@@ -69,5 +66,5 @@ router.post('/broadcast', requireAuth_1.requireAuth, (0, requireRole_1.requireRo
  *       401:
  *         description: Unauthorized
  */
-router.get('/event/:id', requireAuth_1.requireAuth, notificationController_1.getEventNotifications);
+router.get('/:id', requireAuth_1.requireAuth, notificationController_1.getEventNotifications);
 exports.default = router;

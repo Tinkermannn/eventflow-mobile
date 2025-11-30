@@ -28,7 +28,7 @@ export const createBroadcast = async (req: Request, res: Response, next: Functio
     if (!payload)
       return res.status(401).json(errorResponse('Unauthorized'));
     const { eventId, category, message, title, type } = req.body;
-    if (!eventId || !category || !message || !title)
+    if (!eventId || !message || !title)
       return res.status(400).json(errorResponse('Missing fields'));
     // Validasi event dan hak broadcast
     const event = await findEventById(eventId);

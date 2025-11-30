@@ -9,7 +9,6 @@ const express_1 = require("express");
 const requireAuth_1 = require("../utils/requireAuth");
 const requireRole_1 = require("../middleware/requireRole");
 const eventController_1 = require("../controllers/eventController");
-const eventController_2 = require("../controllers/eventController");
 const router = (0, express_1.Router)();
 /**
  * @swagger
@@ -32,7 +31,6 @@ const router = (0, express_1.Router)();
  *               - locationName
  *               - latitude
  *               - longitude
- *               - joinCode
  *             properties:
  *               name:
  *                 type: string
@@ -50,8 +48,6 @@ const router = (0, express_1.Router)();
  *                 type: number
  *               longitude:
  *                 type: number
- *               joinCode:
- *                 type: string
  *     responses:
  *       200:
  *         description: Event berhasil dibuat
@@ -183,26 +179,4 @@ router.post('/:id/join', requireAuth_1.requireAuth, eventController_1.joinEvent)
  *         description: Unauthorized
 */
 router.delete('/:id', requireAuth_1.requireAuth, (0, requireRole_1.requireRole)(['ORGANIZER']), eventController_1.deleteEvent);
-/**
- * @swagger
- * /events/{id}/unjoin:
- *   delete:
- *     summary: Keluar dari event (unjoin)
- *     tags: [Event]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: ID event
- *     responses:
- *       200:
- *         description: Berhasil keluar dari event
- *       401:
- *         description: Unauthorized
- */
-router.delete('/:id/unjoin', requireAuth_1.requireAuth, eventController_2.unjoinEvent);
 exports.default = router;
