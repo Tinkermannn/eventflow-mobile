@@ -76,7 +76,7 @@ export default function OnboardingScreen({ navigation }) {
     };
 
     const skipOnboarding = () => {
-        navigation.replace("Home");
+        navigation.replace("Permission");
     };
 
     // Render dots indicator (dibuat lebih dinamis)

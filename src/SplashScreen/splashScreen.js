@@ -7,11 +7,9 @@ import {
     Image,
     Easing
 } from "react-native";
-/** @type {import('react-native').StyleProp<import('react-native').ViewStyle>} */
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-export default function OnboardingScreen({ navigation }) {
-    // Satu value animasi untuk mengontrol semua animasi
+export default function SplashScreen({ navigation }) {
     const animationValue = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
@@ -23,10 +21,13 @@ export default function OnboardingScreen({ navigation }) {
             useNativeDriver: true,
         }).start();
 
-        // Timer untuk pindah ke Home (uncomment jika ingin navigasi otomatis)
-        const timer = setTimeout(() => {
+        // Timer untuk pindah ke OnBoard
+        const timer = setTimeout(async () => {
+            // Tandai bahwa user sudah melihat onboarding
+            await AsyncStorage.setItem('hasSeenOnboarding', 'true');
             navigation.replace("OnBoard");
         }, 3000);
+
         return () => clearTimeout(timer);
     }, []);
 
@@ -39,15 +40,14 @@ export default function OnboardingScreen({ navigation }) {
     // Interpolasi untuk translateY (naik dari bawah)
     const translateY = animationValue.interpolate({
         inputRange: [0, 1],
-        outputRange: [100, 0], // Mulai 100px di bawah, naik ke posisi 0
+        outputRange: [100, 0],
     });
 
     // Interpolasi untuk scale (sedikit membesar)
     const scale = animationValue.interpolate({
         inputRange: [0, 1],
-        outputRange: [0.8, 1], // Mulai 80% ukuran, membesar ke 100%
+        outputRange: [0.8, 1],
     });
-
 
     return (
         <View style={styles.container}>
@@ -78,20 +78,9 @@ export default function OnboardingScreen({ navigation }) {
             </View>
         </View>
     );
-
 }
 
 const styles = StyleSheet.create({
-    // container: {
-    //     flex: 1,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     backgroundColor: '#04ffffff', 
-    // },
-    // contentContainer: {
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // },
     container: {
         flex: 1,
         justifyContent: "center",
@@ -105,7 +94,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         position: "absolute",
-        bottom: 60, // jarak dari bawah layar
+        bottom: 60,
         alignSelf: "center",
         alignItems: "center"
     },
@@ -114,15 +103,13 @@ const styles = StyleSheet.create({
         color: "#1E38DD",
         fontWeight: "700",
         letterSpacing: 2,
-        //   textTransform: "uppercase", // jadikan kapital semua
     },
     footerTextfrom: {
         fontSize: 20,
         color: "rgba(159, 161, 165, 0.7)",
         fontStyle: "normal",
-        fontWeight: "semibobolld"
+        fontWeight: "600"
     },
-
     logo: {
         width: 160,
         height: 160,

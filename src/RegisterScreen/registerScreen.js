@@ -1,108 +1,219 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
+  useColorScheme,
   View,
   Text,
   StyleSheet,
   TextInput,
   TouchableOpacity,
   Image,
+  Alert,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
 } from "react-native";
-import * as WebBrowser from "expo-web-browser";
-import * as AuthSession from "expo-auth-session";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const API_URL = process.env.API_URL;
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const colorScheme = useColorScheme();
 
-  const [request, response, promptAsync] = AuthSession.useAuthRequest(
-    {
-      clientId: "dummy-client", // kalau SSO UI perlu client id
-      redirectUri: AuthSession.makeRedirectUri({ scheme: "myapp" }),
-      responseType: "token", // atau "code" sesuai kebutuhan SSO UI
-    },
-    
-  );
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-  // === Tangani response ===
-  useEffect(() => {
-    if (response?.type === "success") {
-      const code = response.params.code;
-      console.log("Authorization Code:", code);
+  const handleRegister = async () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      Alert.alert("Error", "Nama, email, dan password tidak boleh kosong");
+      return;
     }
-  }, [response]);
 
-  const handleRegister = () => {
-    console.log("Register:", { name, email, password });
-    navigation.replace("Home");
+    if (!validateEmail(email)) {
+      Alert.alert("Error", "Format email tidak valid");
+      return;
+    }
+
+    if (password.length < 6) {
+      Alert.alert("Error", "Password minimal 6 karakter");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(`${API_URL}/auths/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.toLowerCase().trim(),
+          password: password,
+          phoneNumber: phoneNumber.trim() || undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // if (!data.data?.token) {
+        //   Alert.alert("Error", "Token tidak ditemukan dalam response");
+        //   return;
+        // }
+
+        // await AsyncStorage.setItem("token", data.data.token);
+        await AsyncStorage.setItem("user", JSON.stringify(data.data.user || {}));
+        await AsyncStorage.setItem("savedEmail", email.toLowerCase().trim());
+
+        Alert.alert(
+          "Registrasi Berhasil",
+          "Akun Anda telah dibuat",
+          [
+            {
+              text: "OK",
+              onPress: () => navigation.replace("Login"),
+            },
+          ]
+        );
+      } else {
+        Alert.alert(
+          "Registrasi Gagal",
+          data.message || "Terjadi kesalahan saat registrasi"
+        );
+      }
+    } catch (error) {
+      Alert.alert(
+        "Error",
+        "Tidak dapat terhubung ke server. Periksa koneksi internet Anda."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../../assets/single-logo.png")}
-        style={styles.logo}
-      />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <Image
+          source={require("../../assets/single-logo.png")}
+          style={styles.logo}
+        />
 
-      <Text style={styles.title}>Create Account</Text>
+        <Text
+          style={[
+            styles.title,
+            { color: colorScheme === "dark" ? "#fff" : "#000" },
+          ]}
+        >
+          Create Account
+        </Text>
 
-      <TextInput
-        placeholder="Fullname"
-        value={name}
-        onChangeText={setName}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        style={styles.input}
-      />
+        <TextInput
+          placeholder="Full Name"
+          value={name}
+          onChangeText={setName}
+          autoCapitalize="words"
+          editable={!isLoading}
+          style={styles.input}
+          placeholderTextColor="#999"
+        />
 
-      <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoComplete="email"
+          textContentType="emailAddress"
+          editable={!isLoading}
+          style={styles.input}
+          placeholderTextColor="#999"
+        />
 
-      <TouchableOpacity
-        style={[styles.socialButton, { backgroundColor: "#f4f4f4" }]}
-        disabled={!request}
-        onPress={() => promptAsync()}
-      >
-        <Text style={styles.socialText}>Login dengan SSO UI</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style = {styles.login}>
-        <Text style={styles.loginText}>Already have an account? Login</Text>
-      </TouchableOpacity>
-    </View>
+        <TextInput
+          placeholder="Phone Number (Optional)"
+          value={phoneNumber}
+          onChangeText={setPhoneNumber}
+          keyboardType="phone-pad"
+          autoComplete="tel"
+          textContentType="telephoneNumber"
+          editable={!isLoading}
+          style={styles.input}
+          placeholderTextColor="#999"
+        />
+
+        <TextInput
+          placeholder="Password (min 6 characters)"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+          autoComplete="password"
+          textContentType="password"
+          editable={!isLoading}
+          style={styles.input}
+          placeholderTextColor="#999"
+        />
+
+        <TouchableOpacity
+          style={[styles.button, isLoading && styles.buttonDisabled]}
+          onPress={handleRegister}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>Sign Up</Text>
+          )}
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.loginLink}
+          onPress={() => navigation.navigate("Login")}
+          disabled={isLoading}
+        >
+          <Text style={styles.loginText}>
+            Already have an account? Login
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center", 
-    alignItems: "center",  
-    paddingHorizontal: 20,
     backgroundColor: "#fff",
   },
-  
-  logo: { width: 150, height: 150, marginBottom: 10 },
+  scrollContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    minHeight: "100%",
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 10,
+  },
   title: {
     fontSize: 22,
     fontWeight: "600",
     marginBottom: 20,
-    color: "#fff",
   },
   input: {
     width: "100%",
@@ -125,15 +236,15 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
   },
-  socialButton: {
-    padding: 12,
-    borderRadius: 8,
-    marginTop: 12,
-    alignItems: "center",
-    width: "100%",
+  buttonDisabled: {
+    opacity: 0.5,
   },
-  socialText: { fontSize: 16, fontWeight: "500" },
-  login: {
+  loginLink: {
     paddingVertical: 10,
-  }
+    marginTop: 10,
+  },
+  loginText: {
+    fontSize: 15,
+    color: "#1E38DD",
+  },
 });

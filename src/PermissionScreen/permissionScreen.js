@@ -1,55 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking, ActivityIndicator, Platform, Image} from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, ActivityIndicator, Image, BackHandler } from 'react-native';
 import * as Location from 'expo-location';
 import { Camera } from 'expo-camera';
+import { useFocusEffect } from '@react-navigation/native';
 import Check from '../../assets/checkmark.png'
 
 export default function PermissionsScreen({ navigation }) {
     const [locationStatus, setLocationStatus] = useState(null);
     const [cameraStatus, setCameraStatus] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [hasRequestedPermissions, setHasRequestedPermissions] = useState(false);
+    const isMounted = useRef(true);
+    const navigationAttempted = useRef(false);
 
     // Fungsi untuk memeriksa status izin
     const checkPermissions = async () => {
-        const { status: location } = await Location.getForegroundPermissionsAsync();
-        const { status: camera } = await Camera.getCameraPermissionsAsync();
-        setLocationStatus(location);
-        setCameraStatus(camera);
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        checkPermissions();
-    }, []);
-
-    // Fungsi untuk meminta izin
-    const handleRequestPermissions = async () => {
-        setLoading(true);
-        const { status: location } = await Location.requestForegroundPermissionsAsync();
-        const { status: camera } = await Camera.requestCameraPermissionsAsync();
-        setLocationStatus(location);
-        setCameraStatus(camera);
-        setLoading(false);
-
-        if (location === 'granted' && camera === 'granted') {
-            navigation.replace('Home');
+        try {
+            const { status: location } = await Location.getForegroundPermissionsAsync();
+            const { status: camera } = await Camera.getCameraPermissionsAsync();
+            
+            if (!isMounted.current) return;
+            
+            setLocationStatus(location);
+            setCameraStatus(camera);
+            setLoading(false);
+            
+            // Jika sudah granted semua, navigasi dengan delay
+            if (location === 'granted' && camera === 'granted' && !navigationAttempted.current) {
+                navigationAttempted.current = true;
+                setTimeout(() => {
+                    if (isMounted.current && navigation?.replace) {
+                        navigation.replace('Login');
+                    }
+                }, 500);
+            }
+        } catch (error) {
+            console.error('Check permissions error:', error);
+            if (isMounted.current) {
+                setLoading(false);
+            }
         }
     };
 
-    if (loading) {
-        return <View style={styles.container}><ActivityIndicator size="large" /></View>;
+    useEffect(() => {
+        isMounted.current = true;
+        navigationAttempted.current = false;
+        checkPermissions();
+        
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    // Disable back button di Android - FIXED API
+    useFocusEffect(
+        React.useCallback(() => {
+            const onBackPress = () => {
+                return true; // Prevent back
+            };
+
+            const backHandler = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () => {
+                backHandler.remove(); // FIXED: Gunakan .remove() bukan removeEventListener
+            };
+        }, [])
+    );
+
+    // Fungsi untuk meminta izin
+    const handleRequestPermissions = async () => {
+        try {
+            setLoading(true);
+            setHasRequestedPermissions(true);
+            
+            // Minta izin lokasi terlebih dahulu
+            const { status: location } = await Location.requestForegroundPermissionsAsync();
+            if (isMounted.current) {
+                setLocationStatus(location);
+            }
+            
+            // Delay sebentar sebelum minta permission kedua
+            await new Promise(resolve => setTimeout(resolve, 300));
+            
+            // Kemudian minta izin kamera
+            const { status: camera } = await Camera.requestCameraPermissionsAsync();
+            if (isMounted.current) {
+                setCameraStatus(camera);
+                setLoading(false);
+            }
+
+            // Jika kedua izin diberikan, navigasi dengan delay lebih lama
+            if (location === 'granted' && camera === 'granted' && !navigationAttempted.current) {
+                navigationAttempted.current = true;
+                setTimeout(() => {
+                    if (isMounted.current && navigation?.replace) {
+                        navigation.replace('Login');
+                    }
+                }, 800);
+            }
+        } catch (error) {
+            console.error('Request permissions error:', error);
+            if (isMounted.current) {
+                setLoading(false);
+            }
+        }
+    };
+
+    if (loading && !hasRequestedPermissions) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="#3ab8f3" />
+            </View>
+        );
     }
 
     const allPermissionsGranted = locationStatus === 'granted' && cameraStatus === 'granted';
+    
     const renderPermissionItem = (label, status) => (
         <View style={styles.permissionItem}>
             <Text style={styles.permissionText}>{label}</Text>
             {status === 'granted' ? (
-                // <Text style={styles.icon}>{Check}</Text>
-                 <Image source={Check} style={styles.icon} />
+                <Image source={Check} style={styles.icon} />
             ) : (
                 <TouchableOpacity onPress={() => Linking.openSettings()}>
-                    <Text style={styles.settingsText}>Enable</Text>
+                    <Text style={styles.settingsText}>Enable in Settings</Text>
                 </TouchableOpacity>
             )}
         </View>
@@ -68,8 +142,13 @@ export default function PermissionsScreen({ navigation }) {
             </View>
 
             <TouchableOpacity
-                style={[styles.button, (allPermissionsGranted || loading) && styles.buttonDisabled]}
-                onPress={allPermissionsGranted ? () => navigation.replace('Home') : handleRequestPermissions}
+                style={[styles.button, loading && styles.buttonDisabled]}
+                onPress={allPermissionsGranted ? () => {
+                    if (!navigationAttempted.current) {
+                        navigationAttempted.current = true;
+                        navigation.replace('Login');
+                    }
+                } : handleRequestPermissions}
                 disabled={loading}
             >
                 {loading ? (
@@ -80,6 +159,12 @@ export default function PermissionsScreen({ navigation }) {
                     </Text>
                 )}
             </TouchableOpacity>
+            
+            {hasRequestedPermissions && !allPermissionsGranted && (
+                <Text style={styles.helperText}>
+                    If permissions were denied, please enable them in Settings above.
+                </Text>
+            )}
         </View>
     );
 }
@@ -122,14 +207,13 @@ const styles = StyleSheet.create({
         color: '#444',
     },
     icon: {
-        fontSize: 20,
-        color: 'green',
+        height: 20,
+        width: 20,
     },
     settingsText: {
         fontSize: 14,
         color: '#3ab8f3',
         fontWeight: 'bold',
-        marginLeft: 10,
     },
     button: {
         backgroundColor: '#3ab8f3',
@@ -147,8 +231,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
     },
-    icon: {
-        height: '40%',
-        width: '10%',
+    helperText: {
+        marginTop: 20,
+        fontSize: 14,
+        color: '#666',
+        textAlign: 'center',
+        paddingHorizontal: 20,
     }
 });
